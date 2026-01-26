@@ -13,11 +13,12 @@ spec:
         app: kargo-demo
     spec:
       containers:
-      - name: nginx 
+      - name: nginx
         image: public.ecr.aws/nginx/nginx:placeholder
         volumeMounts:
         - name: content
-          mountPath: /usr/share/nginx/html
+          mountPath: /usr/share/nginx/html/index.html
+          subPath: index.html
           readOnly: true
       volumes:
       - name: content

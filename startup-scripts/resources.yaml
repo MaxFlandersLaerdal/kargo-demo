@@ -1,3 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: kargo-demo
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+      - stage: test
+      - stage: uat
+      - stage: prod
+  template:
+    metadata:
+      name: kargo-demo-{{stage}}
+      annotations:
+        kargo.akuity.io/authorized-stage: kargo-demo:{{stage}}
+    spec:
+      project: default
+      source:
+        repoURL: ${GITOPS_REPO_URL}
+        targetRevision: stage/{{stage}}
+        path: .
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: kargo-demo-{{stage}}
+      syncPolicy:
+        syncOptions:
+        - CreateNamespace=true
+---
 apiVersion: kargo.akuity.io/v1alpha1
 kind: Project
 metadata:
@@ -22,13 +52,11 @@ metadata:
   name: kargo-demo
   namespace: kargo-demo
 spec:
-  interval: 15m
   subscriptions:
   - image:
       repoURL: public.ecr.aws/nginx/nginx
       constraint: ^1.26.0
       discoveryLimit: 5
-      strictSemvers: true
 ---
 apiVersion: kargo.akuity.io/v1alpha1
 kind: PromotionTask
