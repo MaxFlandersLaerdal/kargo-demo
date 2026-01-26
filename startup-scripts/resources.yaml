@@ -54,9 +54,10 @@ metadata:
 spec:
   subscriptions:
   - image:
-      repoURL: public.ecr.aws/nginx/nginx
-      constraint: ^1.26.0
+      repoURL: ghcr.io/MaxFlandersLaerdal/kargo-demo
       discoveryLimit: 5
+      imageSelectionStrategy: Digest
+      constraint: latest
 ---
 apiVersion: kargo.akuity.io/v1alpha1
 kind: PromotionTask
@@ -68,7 +69,7 @@ spec:
   - name: gitopsRepo
     value: ${GITOPS_REPO_URL}
   - name: imageRepo
-    value: public.ecr.aws/nginx/nginx
+    value: ghcr.io/MaxFlandersLaerdal/kargo-demo
   steps:
   - uses: git-clone
     config:
