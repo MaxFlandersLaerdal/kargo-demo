@@ -2,3 +2,6 @@
 |--|--|--|--|
 | Argo Target File Location | App repository, dedicated branch per environment | Shared config repository, directory per service and per environment | Shared config repository, directory per service and per environment |
 | Deployment Trigger | Warehouse/repository scan + new image detected | Github actions trigger | Github actions trigger |
+
+Notes:
+- Warehouse/repository scans run on a cron, meaning the make a lot of api calls
