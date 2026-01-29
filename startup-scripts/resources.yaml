@@ -58,6 +58,7 @@ spec:
       repoURL: ghcr.io/maxflanderslaerdal/kargo-demo
       discoveryLimit: 5
       imageSelectionStrategy: NewestBuild
+      cacheByTag: true
 ---
 apiVersion: kargo.akuity.io/v1alpha1
 kind: PromotionTask
