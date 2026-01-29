@@ -13,7 +13,7 @@ spec:
         app: kargo-demo
     spec:
       containers:
-      - image: ghcr.io/maxflanderslaerdal/kargo-demo:latest
+      - image: ghcr.io/maxflanderslaerdal/kargo-demo:sha-3e83de7
         name: nginx
         volumeMounts:
         - mountPath: /usr/share/nginx/html/index.html
