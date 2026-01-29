@@ -57,8 +57,7 @@ spec:
   - image:
       repoURL: ghcr.io/maxflanderslaerdal/kargo-demo
       discoveryLimit: 5
-      imageSelectionStrategy: Digest
-      constraint: latest
+      imageSelectionStrategy: NewestBuild
 ---
 apiVersion: kargo.akuity.io/v1alpha1
 kind: PromotionTask
