@@ -52,6 +52,7 @@ metadata:
   name: kargo-demo
   namespace: kargo-demo
 spec:
+  interval: 5m
   subscriptions:
   - image:
       repoURL: ghcr.io/maxflanderslaerdal/kargo-demo

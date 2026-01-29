@@ -1,3 +1,3 @@
-GITOPS_REPO_URL=https://github.com/MaxFlandersLaerdal/kargo-demo
-GITHUB_USERNAME=YOUR_VALUE
-GITHUB_PAT=YOUR_VALUE
+export GITOPS_REPO_URL=https://github.com/MaxFlandersLaerdal/kargo-demo
+export GITHUB_USERNAME=YOUR_VALUE
+export GITHUB_PAT=YOUR_VALUE
