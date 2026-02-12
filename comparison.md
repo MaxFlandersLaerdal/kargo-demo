@@ -9,7 +9,13 @@ Notes:
 - Kargo doesn't appear to have any support for identifying releases as a warehouse trigger
 - Using an image + commit hash reference (for configs) is slightly not-obvious
 - Cant use shell scripts - kargo steps were hard to debug
-
+- It is nice that Kargo deploys using k8s resources
+- It is not great that they introduce a whole additional workflow syntax to use when defining PromotionTasks (we are
+  already familiar with GHA syntax)
+- Not gonna lie, it Kargo promotion task runs EXTREMELY fast (but that's also running locally)
+- Should probably think about how the ability to run testes compares, and also the ability to manage who can and cant
+  aprove stuff
+- GOP and Kargo will probably need webhooks configured, which RM would not (since it already runs cleanly inside of GHA)
 
 comparison fields
 - triggers
@@ -32,10 +38,3 @@ comparison fields
     - Each UI represents a run
     - Not obvious how to trigger a deploy (even though its on image build)
     - Provides more detail into each step than Kargo does - useful when debugging
-
-- It is nice that Kargo deploys using k8s resources
-- It is not great that they introduce a whole additional workflow syntax to use when definintion PromotionTasks (we are
-  already familiar with GHA syntax)
-- Not gonna lie, it Kargo promotion task runs EXTREMELY fast (but that's also running locally)
-- Should probably think about how the ability to run testes compares, and also the ability to manage who can and cant
-  aprove stuff
