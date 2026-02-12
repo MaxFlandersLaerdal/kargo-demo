@@ -1,16 +1,11 @@
-| Criteria / Feature | Kargo (Their way) | Kargo (Our way) | Homegrown
-|--|--|--|--|
+| Criteria / Feature        | Kargo (Their way)                                | Kargo (Our way)                                                     | Homegrown                                                           |
+| ------------------------- | ------------------------------------------------ | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | Argo Target File Location | App repository, dedicated branch per environment | Shared config repository, directory per service and per environment | Shared config repository, directory per service and per environment |
-| Deployment Trigger | Warehouse/repository scan + new image detected | Github actions trigger | Github actions trigger |
+| Deployment Trigger        | Warehouse/repository scan + new image detected   | Github actions trigger                                              | Github actions trigger                                              |
 
 Notes:
+
 - Warehouse/repository scans run on a cron, meaning the make a lot of api calls
-
-
-
-
-
-
 - Kargo doesn't appear to have any support for identifying releases as a warehouse trigger
 - Using an image + commit hash reference (for configs) is slightly not-obvious
 - Cant use shell scripts - kargo steps were hard to debug
@@ -37,3 +32,10 @@ comparison fields
     - Each UI represents a run
     - Not obvious how to trigger a deploy (even though its on image build)
     - Provides more detail into each step than Kargo does - useful when debugging
+
+- It is nice that Kargo deploys using k8s resources
+- It is not great that they introduce a whole additional workflow syntax to use when definintion PromotionTasks (we are
+  already familiar with GHA syntax)
+- Not gonna lie, it Kargo promotion task runs EXTREMELY fast (but that's also running locally)
+- Should probably think about how the ability to run testes compares, and also the ability to manage who can and cant
+  aprove stuff
